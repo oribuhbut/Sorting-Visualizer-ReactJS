@@ -1,34 +1,13 @@
-.App {
-  text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #09d3ac;
-}
-
 .chartLi{
 max-width: 120px;
 display: inline-block;
 background-color: rgb(83, 182, 182);
-border: 1px solid white;
+border: 1.3px solid #282c34;
 }
 
 .chartContainer{
+  border-radius: 10px;
+  background-color: #282c34;
   justify-content: center;
   display: inline-flex;
   width: 1000px;
