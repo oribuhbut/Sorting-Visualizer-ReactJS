@@ -1,80 +1,86 @@
 import React from 'react';
 import Navbar from './Components/Navbar/Navbar';
-import { heapSort, mergeSort, callQuickSort, bubbleSort } from './modules/sortFunctions'
+import { heapSort, callQuickSort, bubbleSort } from './modules/sortFunctions'
 import './App.css';
+
+
 class App extends React.Component {
   constructor(props) {
     super(props);
-    this.getSort = this.getSort.bind(this);
-    this.arrChange = this.arrChange.bind(this);
+    this.sort = this.sort.bind(this);
+    this.arrOnChange = this.arrOnChange.bind(this);
     this.animation = this.animation.bind(this);
   }
 
   componentDidMount() {
-
   }
 
   state = {
     arr: [],
-    something: true,
-    inputRange: false
+    disabled: false,
+    speed: 0
   }
 
-  delayLoop(arr, count) {
+
+  delay(arr, count) {
     setTimeout(() => {
-      let index1 = this.state.arr.findIndex(obj => obj.index === arr[count].index1);
-      let index2 = this.state.arr.findIndex(obj => obj.index === arr[count].index2)
-      let temp = this.state.arr[index1]
-      this.state.arr[index1] = this.state.arr[index2];
-      this.state.arr[index2] = temp;
-      count++
-      this.setState({})
-      this.animation(arr, count)
-    }, 20);
+      let firstIndex = this.state.arr.findIndex(obj => obj.index === arr[count].index1);
+      let secondIndex = this.state.arr.findIndex(obj => obj.index === arr[count].index2);
+      let temp = this.state.arr[firstIndex];
+      this.state.arr[firstIndex] = this.state.arr[secondIndex];
+      this.state.arr[secondIndex] = temp;
+      count++;
+      this.setState({});
+      this.animation(arr, count);
+    }, this.state.speed);
   }
 
 
   animation(arr, count) {
+    if (!arr.length) {
+      console.log("here")
+      this.setState({ disabled: false });
+      return;
+    }
     if (count < arr.length) {
-      this.delayLoop(arr, count)
+      this.delay(arr, count);
     }
     else {
-      this.setState({ inputRange: false })
+      this.setState({ disabled: false });
       return;
     }
   }
 
 
 
-  getSort(sort) {
-    this.setState({ inputRange: true })
-    let newarr = this.state.arr.slice()
-    if (sort == "Merge") {
-      console.log(mergeSort(newarr));
+  sort(type) {
+    this.setState({
+      disabled: true,
+    },
+      () => this.state.arr.length > 20 ? this.state.speed = 5 : this.state.speed = 50);
+    let newarr = this.state.arr.slice();
+    if (type == "Quick") {
+      return this.animation(callQuickSort(newarr, 0, newarr.length - 1), 0);
     }
-    if (sort == "Quick") {
-      return this.animation(callQuickSort(newarr, 0, newarr.length - 1), 0)
-    }
-    if (sort == "Bubble") {
+    if (type == "Bubble") {
       return this.animation(bubbleSort(newarr), 0);
     }
-    if (sort == "Heap") {
+    if (type == "Heap") {
       return this.animation(heapSort(newarr), 0);
     }
   }
 
-  arrChange(arr) {
-    this.state.arr = arr;
-    this.setState({})
+  arrOnChange(arr) {
+    this.setState({ arr: arr });
   }
 
   render() {
     return (
       <div>
         <div>
-          <Navbar inputRange={this.state.inputRange} getSort={this.getSort} arrChange={this.arrChange} />
+          <Navbar disabled={this.state.disabled} sort={this.sort} arrOnChange={this.arrOnChange} />
         </div>
-        <div className="lead text-center">Sort Performance is Slowed Down by 20 Times For Simulation</div>
+        <div className="lead text-center">Sort Performance is Slowed Down For Simulation</div>
         <div className="row">
           <ul className="chartContainer">
             {this.state.arr.map((val) => {
@@ -82,11 +88,11 @@ class App extends React.Component {
             })}
           </ul>
         </div>
-        <div class="row" style={{ position: 'fixed', top: '90%',left:'30%' }}>
+        <div class="row" style={{ position: 'fixed', top: '90%', left: '30%' }}>
           <div className="col-md-12">
             <div className="lead text-center">By Ori Buhbut | A Full-Stack Web Developer (currently looking for my first position as a junior 0544264769)</div>
-            <div>For Code Source:</div>
-            </div>
+            <div>For Code Source:<a href="https://github.com/oribuhbut/Sorting-Visualizer-ReactJS">https://github.com/oribuhbut/Sorting-Visualizer-ReactJS</a></div>
+          </div>
         </div>
       </div>
     );
@@ -94,3 +100,4 @@ class App extends React.Component {
 }
 
 export default App;
+
