@@ -20,3 +20,19 @@
 .App-link {
   color: #09d3ac;
 }
+
+.chartLi{
+max-width: 120px;
+display: inline-block;
+background-color: rgb(83, 182, 182);
+border: 1px solid white;
+}
+
+.chartContainer{
+  justify-content: center;
+  display: inline-flex;
+  width: 1000px;
+  margin-top: 110px !important;
+  margin: 0px auto;
+  padding:20px;
+}
