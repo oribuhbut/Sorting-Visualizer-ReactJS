@@ -38,57 +38,12 @@ export function heapSort(input) {
     return sortedArrProgress;
 }
 
-
-/////////Merge Sort///////////
-
-export function mergeSort(unsortedArray) {
-    if (unsortedArray.length <= 1) {
-        return unsortedArray;
-    }
-    var middle = Math.floor(unsortedArray.length / 2);
-    var left = unsortedArray.slice(0, middle);
-    var right = unsortedArray.slice(middle);
-    return merge(mergeSort(left), mergeSort(right));
-}
-
-
-function merge(left, right) {
-    let resultArray = [];
-    let leftIndex = 0;
-    let rightIndex = 0;
-    while (leftIndex < left.length && rightIndex < right.length) {
-        if (left[leftIndex].value < right[rightIndex].value) {
-            resultArray.push(left[leftIndex]);
-            leftIndex++;
-        } else {
-            resultArray.push(right[rightIndex].value);
-            rightIndex++;
-        }
-    }
-    return resultArray
-        .concat(left.slice(leftIndex))
-        .concat(right.slice(rightIndex));
-}
-
-////////////Swap Fucntion/////////////
-
-function swap(a, i, j) {
-    var tmp = a[j];
-    a[j] = a[i];
-    a[i] = tmp;
-    let obj = {
-        index1: a[i].index,
-        index2: a[j].index
-    }
-    return sortedArrProgress.push(obj)
-}
-
 //////////Quick Sort///////////
 
 function partition(items, left, right) {
-    var pivot = items[Math.floor((right + left) / 2)], //middle element
-        i = left, //left pointer
-        j = right; //right pointer
+    var pivot = items[Math.floor((right + left) / 2)],
+        i = left,
+        j = right;
     while (i <= j) {
         while (items[i].value < pivot.value) {
             i++;
@@ -97,7 +52,7 @@ function partition(items, left, right) {
             j--;
         }
         if (i <= j) {
-            swap(items, i, j); //sawpping two elements
+            swap(items, i, j);
             i++;
             j--;
         }
@@ -106,17 +61,16 @@ function partition(items, left, right) {
 }
 export function callQuickSort(arr, left, right) {
     sortedArrProgress = [];
-    return quickSort(arr, left, right)
+    return quickSort(arr, left, right);
 }
 function quickSort(items, left, right) {
-    console.log("here")
     var index;
     if (items.length > 1) {
-        index = partition(items, left, right); //index returned from partition
-        if (left < index - 1) { //more elements on the left side of the pivot
+        index = partition(items, left, right);
+        if (left < index - 1) {
             quickSort(items, left, index - 1);
         }
-        if (index < right) { //more elements on the right side of the pivot
+        if (index < right) {
             quickSort(items, index, right);
         }
     }
@@ -143,3 +97,16 @@ export function bubbleSort(arr) {
     return sortedArrProgress;
 }
 
+
+////////////Swap Fucntion/////////////
+
+function swap(a, i, j) {
+    var tmp = a[j];
+    a[j] = a[i];
+    a[i] = tmp;
+    let obj = {
+        index1: a[i].index,
+        index2: a[j].index
+    }
+    return sortedArrProgress.push(obj);
+}
