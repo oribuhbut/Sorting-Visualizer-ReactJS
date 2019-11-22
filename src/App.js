@@ -38,7 +38,6 @@ class App extends React.Component {
 
   animation(arr, count) {
     if (!arr.length) {
-      console.log("here")
       this.setState({ disabled: false });
       return;
     }
