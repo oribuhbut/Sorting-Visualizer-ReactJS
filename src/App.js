@@ -79,10 +79,10 @@ class App extends React.Component {
   render() {
     return (
       <div>
-        <div>
-          <Navbar disabled={this.state.disabled} sort={this.sort} arrOnChange={this.arrOnChange} />
+        <Navbar disabled={this.state.disabled} sort={this.sort} arrOnChange={this.arrOnChange} />
+        <div className="row">
+          <div className="col-md-12 lead text-center">Sort Performance is Slowed Down For Simulation</div>
         </div>
-        <div className="lead text-center">Sort Performance is Slowed Down For Simulation</div>
         <div className="row">
           <ul className="chartContainer">
             {this.state.arr.map((val) => {
@@ -90,11 +90,9 @@ class App extends React.Component {
             })}
           </ul>
         </div>
-        <div class="row" style={{ position: 'fixed', top: '90%', left: '30%' }}>
-          <div className="col-md-12">
-            <div className="lead text-center">By Ori Buhbut | A Full-Stack Web Developer (currently looking for my first position as a junior 0544264769)</div>
-            <div>For Code Source:<a href="https://github.com/oribuhbut/Sorting-Visualizer-ReactJS">https://github.com/oribuhbut/Sorting-Visualizer-ReactJS</a></div>
-          </div>
+        <div class="row jusify-content-center">
+          <div className="col-md-12 lead text-center">By Ori Buhbut | A Full-Stack Web Developer (currently looking for my first position as a junior 0544264769)</div>
+          <div className="col-md-12 text-center">For Code Source:<a href="https://github.com/oribuhbut/Sorting-Visualizer-ReactJS">https://github.com/oribuhbut/Sorting-Visualizer-ReactJS</a></div>
         </div>
       </div>
     );

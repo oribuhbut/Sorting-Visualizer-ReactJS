@@ -1,3 +1,10 @@
+@media only screen and (max-width: 500px) {
+  .chartLi{
+    max-width: 3px !important;
+    border:0.5px solid #282c34;
+  }
+}
+
 .chartLi{
 max-width: 120px;
 display: inline-block;
@@ -10,8 +17,8 @@ border: 1.3px solid #282c34;
   background-color: #282c34;
   justify-content: center;
   display: inline-flex;
-  width: 1000px;
   margin-top: 110px !important;
   margin: 0px auto;
   padding:20px;
 }
+

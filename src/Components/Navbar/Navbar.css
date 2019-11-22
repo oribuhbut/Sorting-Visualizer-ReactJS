@@ -1,61 +1,35 @@
-.nav-container{
-    display: flex;
-    justify-content: space-between;
-    background-color: #585966;
-    color: white;
-    height: 100px;
+.navbar{
+    padding: 20px;
 }
 
-.nav-ul li{
-    padding-left: 30px;
-    line-height: 100px;
-    display: inline-block;
+.nav-item{
+padding: 10px;
 }
+
 span{
     cursor: pointer;
     font-weight: 500;
 }
 
-.info{
-    font-weight: 450 !important;
-    color: rgb(255, 255, 255);
-    padding-top: 0px !important;
-    padding-bottom: 0px !important;
-    padding-right: 0px !important;
-    margin: 0px !important;
-    display:inline-block;
-    line-height: 100px;
-}
-
-.trigger{
-    text-align: center;
-    padding-left: 15px;
+.trigger div{
     cursor: pointer;
-    line-height: 100px;
-    width: 300px;
-    display: inline-block;
     transition: .5s;
     color: white;
 }
 
-.trigger:hover{
+.trigger div:hover{
     transform: scale(1.1);
 }
 
-.nav-ul{
-    float: right !important;
-    padding-right: 30px;
-    line-height: 100px;
-}
 
 .slider{
-    margin-top: 40px;
+    margin-top: 10px;
     width: 300px;
 }
 
 div[disabled]
 {
-  cursor: default;
+  cursor: default !important;
   pointer-events: none;
   opacity: 0.7;
 }

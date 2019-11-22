@@ -26,7 +26,7 @@ class Navbar extends React.Component {
         for (let i = 0; i < this.state.arr.length; i++) {
             this.state.arr[i] = Object.create(null);
             this.state.arr[i].index = i;
-            this.state.arr[i].value = Math.floor(Math.random() * 100 + 10)
+            this.state.arr[i].value = Math.floor(Math.random() * 60 + 10)
             this.setState({})
         }
         this.props.arrOnChange(this.state.arr);
@@ -47,29 +47,42 @@ class Navbar extends React.Component {
 
     render() {
         return (
-            <div className="row-fluid">
-                <div className="nav-container">
-                    <div className="trigger">
-                        <div disabled={this.props.disabled} onClick={this.sortFunction.bind(this)} className="lead">
-                            Generate New Array Sort
-                        </div>
-                    </div>
-                    <div className="slider">
-                        <InputRange
-                            disabled={this.props.disabled}
-                            maxValue={100}
-                            minValue={1}
-                            value={this.state.value}
-                            onChange={this.setLength.bind(this)} />
-                    </div>
-                    <div className="info lead">{this.state.info}</div>
-                    <div className="nav-ul">
-                        <li><span disabled={this.props.disabled} onClick={() => this.setState({ type: "Quick", info: "Quick Sort" })}>Quick Sort</span></li>
-                        <li><span disabled={this.props.disabled} onClick={() => this.setState({ type: "Heap", info: "Heap Sort" })}>Heap Sort</span></li>
-                        <li><span disabled={this.props.disabled} onClick={() => this.setState({ type: "Bubble", info: "Bubble Sort" })}>Bubble Sort</span></li>
-                    </div>
+            <nav class="navbar navbar-expand-lg navbar-light bg-dark fullwidth">
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav">
+                        <li class="nav-item trigger">
+                            <div disabled={this.props.disabled} onClick={this.sortFunction.bind(this)} className="lead">
+                                Generate New Array Sort
+                            </div>
+                        </li>
+                        <li class="nav-item slider">
+                            <InputRange
+                                disabled={this.props.disabled}
+                                maxValue={100}
+                                minValue={1}
+                                value={this.state.value}
+                                onChange={this.setLength.bind(this)} />
+                        </li>
+                        <li className="nav-item">
+                            <div className="lead text-white">{this.state.info}</div>
+                        </li>
+                    </ul>
+                    <ul className="navbar-nav ml-auto">
+                        <li class="nav-item">
+                            <span className="nav-link text-white" disabled={this.props.disabled} onClick={() => this.setState({ type: "Quick", info: "Quick Sort" })}>Quick Sort</span>
+                        </li>
+                        <li class="nav-item">
+                            <span className="nav-link text-white" disabled={this.props.disabled} onClick={() => this.setState({ type: "Heap", info: "Heap Sort" })}>Heap Sort</span>
+                        </li>
+                        <li class="nav-item">
+                            <span className="nav-link text-white" disabled={this.props.disabled} onClick={() => this.setState({ type: "Bubble", info: "Bubble Sort" })}>Bubble Sort</span>
+                        </li>
+                    </ul>
                 </div>
-            </div>
+            </nav>
         )
     }
 }
