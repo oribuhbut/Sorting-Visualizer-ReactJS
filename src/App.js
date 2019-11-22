@@ -59,14 +59,16 @@ class App extends React.Component {
     },
       () => this.state.arr.length > 20 ? this.state.speed = 5 : this.state.speed = 50);
     let newarr = this.state.arr.slice();
-    if (type == "Quick") {
-      return this.animation(callQuickSort(newarr, 0, newarr.length - 1), 0);
-    }
-    if (type == "Bubble") {
-      return this.animation(bubbleSort(newarr), 0);
-    }
-    if (type == "Heap") {
-      return this.animation(heapSort(newarr), 0);
+    switch (type) {
+      case "Quick":
+        this.animation(callQuickSort(newarr, 0, newarr.length - 1), 0);
+        break;
+      case "Bubble":
+        this.animation(bubbleSort(newarr), 0);
+        break;
+      case "Heap":
+        this.animation(heapSort(newarr), 0);
+        break;
     }
   }
 
