@@ -85,7 +85,7 @@ class App extends React.Component {
         <div className="row">
           <ul className="chartContainer">
             {this.state.arr.map((val) => {
-              return <li className="chartLi" style={{ height: val.value * 3, width: 1000 / this.state.arr.length / 1.5 }} ></li>
+              return <li className="chartLi" style={{ height: val.value * 2, width: 1000 / this.state.arr.length / 1.5 }} ></li>
             })}
           </ul>
         </div>
